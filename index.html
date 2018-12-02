@@ -1,0 +1,50 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 5</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body id="main" style="margin: 0">
+    <div id="toolbar">
+        <div id="title">Project 5</div>
+        <div id="colors"></div>
+        <div id="rad">
+            Line Width: <span id="radval">5</span>
+            <div id="decrad" class="radcontrol">-</div>
+            <div id="incrad" class="radcontrol">+</div>
+        </div>
+        <div id="clear">Clear</div>
+        <div id="save">New Frame</div>
+        <div id="finish">Finish</div>
+        <div id="frame">Frame: <span id="frameCount">1</span></div>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSideBar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="options">
+            <li>Templates</li>
+            <li>Add Your Own</li>
+            <li>About</li>
+        </ul>
+    </div>
+    <div id="about" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+     </div>
+    </div>
+    <canvas id="canvas" style="display: block">
+       unsupported browser
+    </canvas>
+    <script src="main.js"></script>
+    <script src="radius.js"></script>
+    <script src="colors.js"></script>
+    <script src="save.js"></script>
+    <script src="finish.js"></script>
+    <script src="modals.js"></script>
+</body>
+</html>
