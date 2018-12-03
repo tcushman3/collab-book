@@ -10,6 +10,9 @@ clearBtn.addEventListener('click', function(){
 
 var radius = 5; 
 var dragging = false; //basically, is the user pressing the mouse to draw
+var lineSelect = false; //is line template selected?
+var circleSelect = false; //circle template
+var rectSelect = false; //rectangle select
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -41,15 +44,48 @@ var putPoint = function(e){
 
 	}
 }
+
+var drawLine = function(e) {
+	context.beginPath();
+	context.moveTo(e.clientX, e.clientY);
+	context.lineTo(e.clientX, e.clientY);	
+	context.stroke();
+}
+
+var drawCircle = function(e) {
+	context.beginPath();
+	context.arc(e.clientX, e.clientY, 50, 0, 2*Math.PI);
+	context.stroke();
+	context.fill();
+}
+
+var drawRect = function(e) {
+	context.beginPath();
+	context.fillRect(e.clientX, e.clientY, 100, 100);
+	context.stroke();
+}
+
 var engage = function(e){
-	dragging = true;
-	putPoint(e);
+	if (lineSelect == true) {
+		drawLine(e);
+	} else if (circleSelect == true) {
+		drawCircle(e);
+	} else if (rectSelect == true) {
+		drawRect(e);
+	} else {
+		dragging = true;
+		putPoint(e);
+	}
 }
 
 var disengage = function(){
 	dragging = false;
+	lineSelect = false;
+	circleSelect = false;
+	rectSelect = false;
 	context.beginPath();
 }
+
 
 document.onkeydown = checkKey;
 
@@ -57,8 +93,11 @@ document.onkeydown = checkKey;
 var temp = 0;
 
 //want to see if curr has changed since the last key press.
-//need to 
 
+//if not the first drawing, put a background
+if (temp != 0){ 
+
+}
 
 function checkKey(e) {
 
@@ -71,17 +110,21 @@ function checkKey(e) {
 	        canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
 			context.putImageData(images[temp], 0,0);
+        	context.lineWidth = radius*2;
 			console.log("temp: " + temp);
 		}
     }
     //right arrow
     else if (e.keyCode == '39') {
     	temp++;
+
      	if (temp < curr){
 	        canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
 			context.putImageData(images[temp], 0,0);
+        	context.lineWidth = radius*2;
 			console.log("temp: "  + temp);
+
 		} else {
 			clearCanvas(canvas);
 		}

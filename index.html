@@ -18,6 +18,7 @@
         <div id="save">New Frame</div>
         <div id="finish">Finish</div>
         <div id="frame">Frame: <span id="frameCount">1</span></div>
+        <div id="turn">Turn: Player <span id="player">1</span></div>
     </div>
     <div id="sidebar">
         <div class="toggle-btn" onclick="toggleSideBar()">
@@ -27,19 +28,39 @@
         </div>
         <ul class="options">
             <li>Templates</li>
-            <li>Add Your Own</li>
             <li>About</li>
         </ul>
     </div>
-    <div id="about" class="modal">
+    
+    <div id="template-content" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div  id = 'template-block'>
+                <div class = 'template-wrapper' id = 'draw-line' onclick="lineSelect = true, span.onclick()">
+                  <img src = "line button.jpg" class = 'template-button'>
+                </div>
+                <div class = 'template-wrapper' id = 'draw-circle' onclick="circleSelect = true, span.onclick()">
+                    <img src = "circle button.jpg" class = 'template-button'>
+                </div>
+                <div class = 'template-wrapper' id = 'draw-rect' onclick="rectSelect = true, span.onclick()">
+                    <img src = "rect button.jpg" class = 'template-button'>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-content" class="modal">
         <div class="modal-content">
         <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
-     </div>
+          <p>This flipbook project was created by Morgan Gomez, Sarah Weyand, Jenna Kohls, and Wyatt Cushman.</p>
+        </div>
     </div>
-    <canvas id="canvas" style="display: block">
-       unsupported browser
-    </canvas>
+
+
+    <div id="container">
+        <canvas id="canvas" style="display: block">  unsupported browser </canvas>
+        <img id="prevDrawing" style= "opacity: 0.1"></img>
+    </div>
     <script src="main.js"></script>
     <script src="radius.js"></script>
     <script src="colors.js"></script>
